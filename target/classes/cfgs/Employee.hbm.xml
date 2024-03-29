@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    <class name="dto.Employee" table="employee" discriminator-value="emp">
+    <id name="empNo" column="EMP_ID"></id>
+     <discriminator column="EMP_TYPE" type="string"></discriminator>
+    <property name="empName" column="EMP_Name"></property>
+    
+    <subclass name="dto.PermanantEmployee" discriminator-value="PER_EMP">
+    	<property name="salary" column="EMP_Salary"></property>
+    	<property name="bonus" column="EMP_Bonus"></property>
+    </subclass>
+    
+       <subclass name="dto.ContractEmployee" discriminator-value="CON_EMP">
+    	<property name="payPerHour" column="EMP_PayPerHour"></property>
+    	<property name="contractPeriod" column="EMP_ContP"></property>
+    </subclass>
+    
+    
+    </class>
+    </hibernate-mapping>
